@@ -41,7 +41,7 @@ function lazyBackgroundCSS() {
 			if( scrollTop >= divSeen ) {
 				var objClass = lazyBackgrounds[i].getAttribute('class');
 				if( objClass.search('background') === -1 ) {
-					lazyBackgrounds[i].setAttribute('class', objClass + ' background');
+					lazyBackgrounds[i].setAttribute('class', objClass + ' lzbg');
 				}
 			} 
 		}
