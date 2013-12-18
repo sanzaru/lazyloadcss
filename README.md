@@ -1,4 +1,4 @@
 lazyloadcss
 ===========
 
-Lazy load for CSS background images
+Lazy load scrupt for CSS background images.
