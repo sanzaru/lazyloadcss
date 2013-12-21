@@ -16,9 +16,26 @@
 		}
 
 		#img2Div {
+			position: relative;
 			margin-top: 20px;
 			height: 600px;
 			border: 1px solid blue;
+		}
+
+		#imgAbs {
+			position: absolute;
+			top: 400px;
+			left: 300px;
+			width: 300px;
+			height: 300px;
+		}
+
+		#imgAbs2 {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			width: 50px;
+			height: 50px;
 		}
 
 		#img1Div.lzbg {
@@ -30,13 +47,27 @@
 			background: url('background2.jpg');
 			background-size: cover;
 		}
+
+		#imgAbs.lzbg {
+			background: url('background3.jpg');
+			background-size: cover;
+		}
+
+		#imgAbs2.lzbg {
+			background: url('background4.jpg');
+			background-size: cover;
+		}
 	</style>
 	<script src="../lazyLoadCss.js"></script>
 </head>
 <body>
-	<div id="bigDiv" class="lazyBackground"></div>
+	<div id="bigDiv" class="lazyBackground"></div>	
 	<div id="img1Div" class="lazyBackground"></div>
-	<div id="img2Div" class="lazyBackground"></div>
+	<div id="img2Div" class="lazyBackground">
+		<div id="imgAbs" class="lazyBackground">
+			<div id="imgAbs2" class="lazyBackground"></div>
+		</div>
+	</div>
 	<script>					
 		lazyBackgroundCSS();		
 	</script>

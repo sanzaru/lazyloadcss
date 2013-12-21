@@ -31,16 +31,34 @@ function lazyBackgroundCSS() {
 	this.count = lazyBackgrounds.length;
 
 	/**
+	 * Fetch offsetTop for element
+	 */
+	this.offTop = function(obj) {
+		var pos = obj.offsetTop;
+		var o = obj;
+		var p = o.offsetParent;
+		if( p ) {
+			while(p) {			
+				pos += p.offsetTop;
+				o = p;
+				p = o.offsetParent;
+			}
+		}		
+		return pos;
+	};
+
+	/**
 	 * Check if the images are inside the viewport
 	 */
 	this.check = function() {
 		var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;				
-		for(var i=0; i<count; i++) {					
-			var pos = lazyBackgrounds[i].offsetTop;
-			var divSeen = (pos - document.documentElement.clientHeight) - 100;					
-			if( scrollTop >= divSeen ) {
-				var objClass = lazyBackgrounds[i].getAttribute('class');
-				if( objClass.search('background') === -1 ) {
+		for(var i=0; i<count; i++) {
+			var offset = (lazyBackgrounds[i].getAttribute('data-offset')) ? lazyBackgrounds[i].getAttribute('data-offset') : 100;
+			var pos = this.offTop(lazyBackgrounds[i]);
+			var divSeen = (pos - document.documentElement.clientHeight) - offset;
+			if( scrollTop >= divSeen ) {				
+				var objClass = lazyBackgrounds[i].getAttribute('class');				
+				if( objClass.search('lzbg') === -1 ) {
 					lazyBackgrounds[i].setAttribute('class', objClass + ' lzbg');
 				}
 			} 
