@@ -8,10 +8,16 @@ module.exports = function(grunt) {
             build: {
                 src: '<%= pkg.name %>.js',
                 dest: '<%= pkg.name %>.min.js'
-            }
+            },
+        },
+
+        watch: {
+            files: ['lazyLoadCss.js'],
+            tasks: ['uglify']            
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');  
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.registerTask('default', ['uglify']);
 };

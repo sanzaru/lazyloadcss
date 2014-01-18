@@ -27,8 +27,8 @@
  */
 function lazyBackgroundCSS() {
 	var self = this;
-	this.lazyBackgrounds = document.querySelectorAll('.lazyBackground');
-	this.count = lazyBackgrounds.length;
+	this.backgrounds = document.querySelectorAll('.lazyBackground');
+	this.count = this.backgrounds.length;
 
 	/**
 	 * Fetch offsetTop for element
@@ -38,7 +38,7 @@ function lazyBackgroundCSS() {
 		var o = obj;
 		var p = o.offsetParent;
 		if( p ) {
-			while(p) {			
+			while(p) {							
 				pos += p.offsetTop;
 				o = p;
 				p = o.offsetParent;
@@ -53,13 +53,13 @@ function lazyBackgroundCSS() {
 	this.check = function() {
 		var scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;				
 		for(var i=0; i<count; i++) {
-			var offset = (lazyBackgrounds[i].getAttribute('data-offset')) ? lazyBackgrounds[i].getAttribute('data-offset') : 100;
-			var pos = this.offTop(lazyBackgrounds[i]);
+			var offset = (backgrounds[i].getAttribute('data-offset')) ? backgrounds[i].getAttribute('data-offset') : 100;
+			var pos = this.offTop(backgrounds[i]);
 			var divSeen = (pos - document.documentElement.clientHeight) - offset;
 			if( scrollTop >= divSeen ) {				
-				var objClass = lazyBackgrounds[i].getAttribute('class');				
+				var objClass = backgrounds[i].getAttribute('class');				
 				if( objClass.search('lzbg') === -1 ) {
-					lazyBackgrounds[i].setAttribute('class', objClass + ' lzbg');
+					backgrounds[i].setAttribute('class', objClass + ' lzbg');
 				}
 			} 
 		}
